@@ -1,0 +1,10 @@
+{
+  "name": "the-he-jiankui-game",
+  "version": "1.0.0",
+  "description": "Interactive narrative game about He Jiankui and the ethics of genetic editing",
+  "scripts": {
+    "start": "npx serve"
+  },
+  "author": "Daniel Quimbay, Juan Pedraza",
+  "license": "MIT"
+}

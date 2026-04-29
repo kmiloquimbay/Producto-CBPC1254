@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Juego de He Jiankui - La Edición Génetica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dna-background"></div>
+
+    <div class="stats-bar" id="statsBar" style="display: none;">
+        <div class="stat prestige">
+            <span class="stat-label">Prestigio:</span>
+            <span class="stat-value" id="prestigeValue">50</span>
+        </div>
+        <div class="stat ethics">
+            <span class="stat-label">Ética:</span>
+            <span class="stat-value" id="ethicsValue">50</span>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <div class="scene active" id="titleScene">
+            <div class="title-screen">
+                <h1>El Juego de He Jiankui</h1>
+                <p class="subtitle">Una narrativa interactiva sobre ética científica</p>
+                
+                <div class="authors">
+                    <h3>Autores</h3>
+                    <p>Daniel Quimbay – 202313861</p>
+                    <p>Juan Pedraza – 202315383</p>
+                </div>
+
+                <button class="btn-start" onclick="startGame()">Comenzar</button>
+            </div>
+        </div>
+
+        <div class="scene" id="scene1">
+            <div class="scene-header">
+                <div class="scene-number">Escena 1</div>
+                <h2 class="scene-title">El Gran Salto (Gan Dashi)</h2>
+            </div>
+            <div class="scenery">
+                <span class="scenery-icon">🏢</span>
+                <span>Tu oficina en SUSTech. Un calendario marca las metas del plan nacional Made in China 2025.</span>
+            </div>
+            <p class="message">"Tu laboratorio tiene recursos y libertad para definir su enfoque. El campo de la edición genética avanza rápido, pero aún no hay consenso sobre su aplicación en humanos."</p>
+            <div class="decisions">
+                <button class="decision-btn" onclick="makeChoice(1, 'basic', 20, -10)">
+                    <span class="choice-label">Investigación básica</span>
+                    Estudiar embriones que nunca nacerán. Avance seguro, pero impacto limitado a corto plazo.
+                </button>
+                <button class="decision-btn" onclick="makeChoice(1, 'clinical', -15, 20)">
+                    <span class="choice-label">Proyecto de nacimiento</span>
+                    Proyecto de aplicación clínica en embriones. Mayor impacto potencial, con mayor incertidumbre.
+                </button>
+            </div>
+        </div>
+
+        <div class="scene" id="scene2">
+            <div class="scene-header">
+                <div class="scene-number">Escena 2</div>
+                <h2 class="scene-title">El Objetivo Médico</h2>
+            </div>
+            <div class="scenery">
+                <span class="scenery-icon">🧬</span>
+                <span>Pantalla de laboratorio analizando secuencias de ADN.</span>
+            </div>
+            <p class="message">"Para que el mundo acepte este experimento, el beneficio debe ser obvio. debemos elegir qué gen 'reparar'."</p>
+            <div class="decisions">
+                <button class="decision-btn" onclick="makeChoice(2, 'rare', 5, 15)">
+                    <span class="choice-label">Enfermedad genérica muy rara</span>
+                    Alta justificación médica, menor visibilidad pública.
+                </button>
+                <button class="decision-btn" onclick="makeChoice(2, 'ccr5', 15, -10)">
+                    <span class="choice-label">Gen CCR5 (VIH)</span>
+                    Crear resistencia hereditaria al SIDA. Mayor impacto social percibido, con debate sobre su necesidad.
+                </button>
+            </div>
+        </div>
+
+        <div class="scene" id="scene3">
+            <div class="scene-header">
+                <div class="scene-number">Escena 3</div>
+                <h2 class="scene-title">Reclutamiento</h2>
+            </div>
+            <div class="scenery">
+                <span class="scenery-icon">👨‍👩‍👧</span>
+                <span>Una sala privada. Una pareja que vive con el estigma del VIH te mira con esperanza.</span>
+            </div>
+            <p class="message">"En China, estas familias no tienen permitido acceder a clínicas de fertilidad normales. Las familias ven en tu proyecto una oportunidad."</p>
+            <div class="decisions">
+                <button class="decision-btn" onclick="makeChoice(3, 'technical', 0, 20)">
+                    <span class="choice-label">Explicación técnica completa</span>
+                    Advertir sobre cada posible error genético. Mayor claridad y posible retirada.
+                </button>
+                <button class="decision-btn" onclick="makeChoice(3, 'simplified', 15, -15)">
+                    <span class="choice-label">Explicación simplificada</span>
+                    Enfocarte en los beneficios. Mayor participación, menor comprensión total.
+                </button>
+            </div>
+        </div>
+
+        <div class="scene" id="scene4">
+            <div class="scene-header">
+                <div class="scene-number">Escena 4</div>
+                <h2 class="scene-title">Aprobación del proyecto</h2>
+            </div>
+            <div class="scenery">
+                <span class="scenery-icon">📜</span>
+                <span>Una carta oficial confirmando que el VIH sigue siendo una barrera legal para la reproducción asistida.</span>
+            </div>
+            <p class="message">"El proceso formal puede retrasar el proyecto significativamente. Existen alternativas menos visibles, pero más rápidas."</p>
+            <div class="decisions">
+                <button class="decision-btn" onclick="makeChoice(4, 'formal', 10, 20)">
+                    <span class="choice-label">Seguir el proceso institucional completo</span>
+                    Mayor legitimidad, pero menor velocidad.
+                </button>
+                <button class="decision-btn" onclick="makeChoice(4, 'internal', 20, -20)">
+                    <span class="choice-label">Utilizar vías internas para avanzar</span>
+                    Mayor rapidez, pero menor respaldo formal.
+                </button>
+            </div>
+        </div>
+
+        <div class="scene" id="scene5">
+            <div class="scene-header">
+                <div class="scene-number">Escena 5</div>
+                <h2 class="scene-title">El Fallo en los Datos (Mosaicismo)</h2>
+            </div>
+            <div class="scenery">
+                <span class="scenery-icon">📊</span>
+                <span>Gráficos del monitor mostrando que solo algunas células del embrión fueron editadas correctamente.</span>
+            </div>
+            <p class="message">"Los resultados no son uniformes. No sabemos con certeza los efectos a largo plazo."</p>
+            <div class="decisions">
+                <button class="decision-btn" onclick="makeChoice(5, 'reset', -10, 15)">
+                    <span class="choice-label">Reiniciar el proceso</span>
+                    Descartar el embrión y empezar de cero. Mayor control, pero pérdida de tiempo.
+                </button>
+                <button class="decision-btn" onclick="makeChoice(5, 'continue', 15, -20)">
+                    <span class="choice-label">Continuar con la implantação</span>
+                    Mantienes el avance científico, pero con incertidumbre.
+                </button>
+            </div>
+        </div>
+
+        <div class="scene" id="scene6">
+            <div class="scene-header">
+                <div class="scene-number">Escena 6</div>
+                <h2 class="scene-title">Comunicación</h2>
+            </div>
+            <div class="scenery">
+                <span class="scenery-icon">📱</span>
+                <span>Tu escritorio. Tienes un video grabado para YouTube y un borrador para la revista Nature.</span>
+            </div>
+            <p class="message">"Tu trabajo está listo para ser comunicado. La forma de hacerlo definirá su impacto."</p>
+            <div class="decisions">
+                <button class="decision-btn" onclick="makeChoice(6, 'academic', 10, 15)">
+                    <span class="choice-label">Publicación académica</span>
+                    Esperar meses a que otros científicos revisen tus datos. Validación formal, pero lenta.
+                </button>
+                <button class="decision-btn" onclick="makeChoice(6, 'youtube', 20, -15)">
+                    <span class="choice-label">Anuncio directo (YouTube)</span>
+                    Revelar el nacimiento al público general hoy mismo. Difusión rápida, pero menor validación inicial.
+                </button>
+            </div>
+        </div>
+
+        <div class="scene" id="scene7">
+            <div class="scene-header">
+                <div class="scene-number">Escena 7</div>
+                <h2 class="scene-title">El Juicio de Hong Kong</h2>
+            </div>
+            <div class="scenery">
+                <span class="scenery-icon">🎤</span>
+                <span>El podio de la Cumbre Internacional.</span>
+            </div>
+            <p class="message">"La comunidad científica cuestiona tu enfoque y tus decisiones."</p>
+            <div class="decisions">
+                <button class="decision-btn" onclick="makeChoice(7, 'admit', -5, 25)">
+                    <span class="choice-label">Reconocer limitaciones y errores</span>
+                    Admitir que debiste ser más transparente. Reduce conflicto, pero puede afectar tu imagen.
+                </button>
+                <button class="decision-btn" onclick="makeChoice(7, 'defend', 10, -20)">
+                    <span class="choice-label">Defender el resultado</span>
+                    Reforzar tu postura. Mantienes tu convicción de que el fin justifica los medios.
+                </button>
+            </div>
+        </div>
+
+        <div class="scene" id="endingScene">
+            <div class="ending-screen">
+                <h2>Fin de la Partida</h2>
+                <div class="ending-stats">
+                    <div class="ending-stat">
+                        <div class="value" id="finalPrestige" style="color: var(--prestige-high)">50</div>
+                        <div class="label">Prestigio</div>
+                    </div>
+                    <div class="ending-stat">
+                        <div class="value" id="finalEthics" style="color: var(--ethics-high)">50</div>
+                        <div class="label">Ética</div>
+                    </div>
+                </div>
+                <p class="ending-description" id="endingDescription"></p>
+                <button class="btn-restart" onclick="restartGame()">Jugar de nuevo</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
