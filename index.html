@@ -10,6 +10,13 @@
 <body>
     <div class="dna-background"></div>
 
+    <div class="notifications" id="notifications"></div>
+    
+    <div class="inbox-indicator" id="inboxIndicator" onclick="showAllNotifications()">
+        <span>📬</span>
+        <span id="inboxCount">2 mensajes pendientes</span>
+    </div>
+
     <div class="stats-bar" id="statsBar" style="display: none;">
         <div class="stat prestige">
             <span class="stat-label">Prestigio:</span>
@@ -26,6 +33,7 @@
             <div class="title-screen">
                 <h1>El Juego de He Jiankui</h1>
                 <p class="subtitle">Una narrativa interactiva sobre ética científica</p>
+                <p class="year">China, 2016-2018</p>
                 
                 <div class="authors">
                     <h3>Autores</h3>
@@ -41,159 +49,175 @@
             <div class="scene-header">
                 <div class="scene-number">Escena 1</div>
                 <h2 class="scene-title">El Gran Salto (Gan Dashi)</h2>
+                <p class="scene-date">Shenzhen, China - Noviembre 2016</p>
             </div>
             <div class="scenery">
                 <span class="scenery-icon">🏢</span>
-                <span>Tu oficina en SUSTech. Un calendario marca las metas del plan nacional Made in China 2025.</span>
+                <span>Tu oficina en SUSTech (Universidad de Ciencia y Tecnología del Sur). Un calendario marca las metas del plan nacional Made in China 2025: liderar la biotecnología mundial antes de 2025.</span>
             </div>
-            <p class="message">"Tu laboratorio tiene recursos y libertad para definir su enfoque. El campo de la edición genética avanza rápido, pero aún no hay consenso sobre su aplicación en humanos."</p>
+            <p class="message">"Tu laboratorio tiene recursos y libertad para definir su enfoque. El campo de la edición genética avanza rápido, pero aún no hay consenso sobre su aplicación en humanos. Estados Unidos y Reino Unido discuten regulaciones, pero China no ha actuado aún."</p>
+            <p class="context-hint">Contexto: El plan Made in China 2025 impulsa a los científicos chinos a ser los primeros en campos estratégicos. La presión por "innovar primero" es intensa.</p>
             <div class="decisions">
-                <button class="decision-btn" onclick="makeChoice(1, 'basic', 20, -10)">
+                <button class="decision-btn" onclick="makeChoice(1, 'basic', 5, 10)">
                     <span class="choice-label">Investigación básica</span>
                     Estudiar embriones que nunca nacerán. Avance seguro, pero impacto limitado a corto plazo.
                 </button>
-                <button class="decision-btn" onclick="makeChoice(1, 'clinical', -15, 20)">
+                <button class="decision-btn" onclick="makeChoice(1, 'clinical', 10, -5)">
                     <span class="choice-label">Proyecto de nacimiento</span>
                     Proyecto de aplicación clínica en embriones. Mayor impacto potencial, con mayor incertidumbre.
                 </button>
             </div>
+            <button class="btn-continue" onclick="goToNextScene()">Continuar</button>
         </div>
-
         <div class="scene" id="scene2">
             <div class="scene-header">
                 <div class="scene-number">Escena 2</div>
                 <h2 class="scene-title">El Objetivo Médico</h2>
+                <p class="scene-date">Shenzhen, China - Marzo 2017</p>
             </div>
             <div class="scenery">
                 <span class="scenery-icon">🧬</span>
                 <span>Pantalla de laboratorio analizando secuencias de ADN.</span>
             </div>
-            <p class="message">"Para que el mundo acepte este experimento, el beneficio debe ser obvio. debemos elegir qué gen 'reparar'."</p>
+            <p class="message">"Para que el mundo acepte este experimento, el beneficio debe ser obvio. debemos elegir qué gen 'reparar'. La técnica CRISPR-Cas9 está lista, solo falta el objetivo."</p>
             <div class="decisions">
-                <button class="decision-btn" onclick="makeChoice(2, 'rare', 5, 15)">
+                <button class="decision-btn" onclick="makeChoice(2, 'rare', 5, 10)">
                     <span class="choice-label">Enfermedad genérica muy rara</span>
                     Alta justificación médica, menor visibilidad pública.
                 </button>
-                <button class="decision-btn" onclick="makeChoice(2, 'ccr5', 15, -10)">
+                <button class="decision-btn" onclick="makeChoice(2, 'ccr5', 10, -10)">
                     <span class="choice-label">Gen CCR5 (VIH)</span>
                     Crear resistencia hereditaria al SIDA. Mayor impacto social percibido, con debate sobre su necesidad.
                 </button>
             </div>
+            <button class="btn-continue" onclick="goToNextScene()">Continuar</button>
         </div>
 
         <div class="scene" id="scene3">
             <div class="scene-header">
                 <div class="scene-number">Escena 3</div>
                 <h2 class="scene-title">Reclutamiento</h2>
+                <p class="scene-date">Shenzhen, China - Marzo 2017</p>
             </div>
             <div class="scenery">
                 <span class="scenery-icon">👨‍👩‍👧</span>
                 <span>Una sala privada. Una pareja que vive con el estigma del VIH te mira con esperanza.</span>
             </div>
-            <p class="message">"En China, estas familias no tienen permitido acceder a clínicas de fertilidad normales. Las familias ven en tu proyecto una oportunidad."</p>
+            <p class="message">"En China, las parejas con VIH no tienen permitido acceder a clínicas de fertilidad normales. Las familias ven en tu proyecto una oportunidad única. Además, otros laboratorios en EE.UU. ya están reclutando familias para experimentos similares."</p>
             <div class="decisions">
-                <button class="decision-btn" onclick="makeChoice(3, 'technical', 0, 20)">
+                <button class="decision-btn" onclick="makeChoice(3, 'technical', 0, 10)">
                     <span class="choice-label">Explicación técnica completa</span>
                     Advertir sobre cada posible error genético. Mayor claridad y posible retirada.
                 </button>
-                <button class="decision-btn" onclick="makeChoice(3, 'simplified', 15, -15)">
+                <button class="decision-btn" onclick="makeChoice(3, 'simplified', 10, -10)">
                     <span class="choice-label">Explicación simplificada</span>
                     Enfocarte en los beneficios. Mayor participación, menor comprensión total.
                 </button>
             </div>
+            <button class="btn-continue" onclick="goToNextScene()">Continuar</button>
         </div>
 
         <div class="scene" id="scene4">
             <div class="scene-header">
                 <div class="scene-number">Escena 4</div>
                 <h2 class="scene-title">Aprobación del proyecto</h2>
+                <p class="scene-date">Shenzhen, China - 2017</p>
             </div>
             <div class="scenery">
                 <span class="scenery-icon">📜</span>
-                <span>Una carta oficial confirmando que el VIH sigue siendo una barrera legal para la reproducción asistida.</span>
+                <span>Una carta oficial confirmando que el VIH sigue siendo una barrera legal para la reproducción asistida en China.</span>
             </div>
-            <p class="message">"El proceso formal puede retrasar el proyecto significativamente. Existen alternativas menos visibles, pero más rápidas."</p>
+            <p class="message">"El proceso formal de aprobación puede retrasar el proyecto 6-12 meses. Hay otros laboratorios en el mundo buscando lo mismo. Un investigador del MIT declaró públicamente que trabajan en algo 'revolucionario'. Existe la posibilidad de usar vías alternativas..."</p>
             <div class="decisions">
-                <button class="decision-btn" onclick="makeChoice(4, 'formal', 10, 20)">
+                <button class="decision-btn" onclick="makeChoice(4, 'formal', 5, 10)">
                     <span class="choice-label">Seguir el proceso institucional completo</span>
-                    Mayor legitimidad, pero menor velocidad.
+                    Mayor legitimidad, pero menor velocidad. Riesgos de perder la primicia.
                 </button>
-                <button class="decision-btn" onclick="makeChoice(4, 'internal', 20, -20)">
+                <button class="decision-btn" onclick="makeChoice(4, 'internal', 10, -10)">
                     <span class="choice-label">Utilizar vías internas para avanzar</span>
-                    Mayor rapidez, pero menor respaldo formal.
+                    Mayor rapidez, pero sin supervisión ética formal.
                 </button>
             </div>
+            <button class="btn-continue" onclick="goToNextScene()">Continuar</button>
         </div>
 
         <div class="scene" id="scene5">
             <div class="scene-header">
                 <div class="scene-number">Escena 5</div>
                 <h2 class="scene-title">El Fallo en los Datos (Mosaicismo)</h2>
+                <p class="scene-date">Shenzhen, China - Julio 2018</p>
             </div>
             <div class="scenery">
                 <span class="scenery-icon">📊</span>
-                <span>Gráficos del monitor mostrando que solo algunas células del embrión fueron editadas correctamente.</span>
+                <span>Gráficos del monitor mostrando que solo algunas células del embrión fueron editadas correctamente (mosaicismo).</span>
             </div>
-            <p class="message">"Los resultados no son uniformes. No sabemos con certeza los efectos a largo plazo."</p>
+            <p class="message">"Los resultados no son uniformes. No todas las células del embrión tienen la edición correcta. No sabemos con certeza los efectos a largo plazo. Los embriones muestran resultados mixtos."</p>
             <div class="decisions">
-                <button class="decision-btn" onclick="makeChoice(5, 'reset', -10, 15)">
+                <button class="decision-btn" onclick="makeChoice(5, 'reset', -5, 10)">
                     <span class="choice-label">Reiniciar el proceso</span>
-                    Descartar el embrión y empezar de cero. Mayor control, pero pérdida de tiempo.
+                    Descartar el embrión y empezar de cero. Mayor control, pero pérdida de meses de trabajo.
                 </button>
-                <button class="decision-btn" onclick="makeChoice(5, 'continue', 15, -20)">
-                    <span class="choice-label">Continuar con la implantação</span>
-                    Mantienes el avance científico, pero con incertidumbre.
+                <button class="decision-btn" onclick="makeChoice(5, 'implant', 10, -10)">
+                    <span class="choice-label">Continuar con la implantación</span>
+                    Mantienes el avance científico, pero con incertidumbre sobre mutaciones no intencionales.
                 </button>
             </div>
+            <button class="btn-continue" onclick="goToNextScene()">Continuar</button>
         </div>
 
         <div class="scene" id="scene6">
             <div class="scene-header">
                 <div class="scene-number">Escena 6</div>
                 <h2 class="scene-title">Comunicación</h2>
+                <p class="scene-date">Noviembre 2018</p>
             </div>
             <div class="scenery">
                 <span class="scenery-icon">📱</span>
-                <span>Tu escritorio. Tienes un video grabado para YouTube y un borrador para la revista Nature.</span>
+                <span>Tu escritorio. Tienes un video grabado para YouTube y un borrador para la revista Nature. Ha nacido una niña (las gemelas Lulu y Nana nacen en diferentes fechas).</span>
             </div>
-            <p class="message">"Tu trabajo está listo para ser comunicado. La forma de hacerlo definirá su impacto."</p>
+            <p class="message">"Las gemelas han nacido. Tu trabajo está listo para ser comunicado. La comunidad científica internacional se reúne en la Cumbre de Edit World en Hong Kong. La forma de hacerlo definirá su impacto."</p>
             <div class="decisions">
-                <button class="decision-btn" onclick="makeChoice(6, 'academic', 10, 15)">
+                <button class="decision-btn" onclick="makeChoice(6, 'academic', 5, 10)">
                     <span class="choice-label">Publicación académica</span>
-                    Esperar meses a que otros científicos revisen tus datos. Validación formal, pero lenta.
+                    Presentar en la cumbre de Hong Kong y esperar meses a que otros científicos revisen tus datos. Validación formal, pero lenta.
                 </button>
-                <button class="decision-btn" onclick="makeChoice(6, 'youtube', 20, -15)">
+                <button class="decision-btn" onclick="makeChoice(6, 'youtube', 10, -10)">
                     <span class="choice-label">Anuncio directo (YouTube)</span>
-                    Revelar el nacimiento al público general hoy mismo. Difusión rápida, pero menor validación inicial.
+                    Revelar el nacimiento al público general antes de la cumbre. Difusión rápida, mayor primicia pero sin validación científica.
                 </button>
             </div>
+            <button class="btn-continue" onclick="goToNextScene()">Continuar</button>
         </div>
 
         <div class="scene" id="scene7">
             <div class="scene-header">
                 <div class="scene-number">Escena 7</div>
                 <h2 class="scene-title">El Juicio de Hong Kong</h2>
+                <p class="scene-date">Cumbre Internacional de Edición Génica - Hong Kong, 26-28 de Noviembre 2018</p>
             </div>
             <div class="scenery">
                 <span class="scenery-icon">🎤</span>
-                <span>El podio de la Cumbre Internacional.</span>
+                <span>El podio de la Cumbre Internacional. Científicos de todo el mundo esperan tus explicaciones.</span>
             </div>
-            <p class="message">"La comunidad científica cuestiona tu enfoque y tus decisiones."</p>
+            <p class="message">"La comunidad científica mundial cuestiona tu enfoque. Francisco, un investigador朋友的 del MIT, pregunta si no evitaste los comités de ética. La audiencia presencial y online contiene el aliento."</p>
+            <p class="context-hint">Contexto: No existían regulaciones específicas para edición germinal en China en 2018. El debate global sobre CRISPR en humanos apenas comenzaba.</p>
             <div class="decisions">
-                <button class="decision-btn" onclick="makeChoice(7, 'admit', -5, 25)">
+                <button class="decision-btn" onclick="makeChoice(7, 'admit', 0, 10)">
                     <span class="choice-label">Reconocer limitaciones y errores</span>
-                    Admitir que debiste ser más transparente. Reduce conflicto, pero puede afectar tu imagen.
+                    Admitir que debiste ser más transparente. Reduces el conflicto, pero dañas tu imagen profesional.
                 </button>
-                <button class="decision-btn" onclick="makeChoice(7, 'defend', 10, -20)">
+                <button class="decision-btn" onclick="makeChoice(7, 'defend', 10, -10)">
                     <span class="choice-label">Defender el resultado</span>
                     Reforzar tu postura. Mantienes tu convicción de que el fin justifica los medios.
                 </button>
             </div>
+            <button class="btn-continue" onclick="goToNextScene()">Ver Resultados</button>
         </div>
 
         <div class="scene" id="endingScene">
             <div class="ending-screen">
-                <h2>Fin de la Partida</h2>
+                <h2>Consecuencias</h2>
+                <p class="ending-date">30 de Diciembre de 2019</p>
                 <div class="ending-stats">
                     <div class="ending-stat">
                         <div class="value" id="finalPrestige" style="color: var(--prestige-high)">50</div>
@@ -205,6 +229,10 @@
                     </div>
                 </div>
                 <p class="ending-description" id="endingDescription"></p>
+                <div class="ending-facts">
+                    <h3>Hecho Histórico</h3>
+                    <p>En diciembre de 2019, He Jiankui fue sentenciado a <strong>3 años de prisión</strong> por "práctica médica ilegal". Las gemelas Lulu y Nana, nacidas en 2018, viven actualmente bajo supervisión médica en China. El caso motivó la creación de regulaciones más estrictas sobre edición genética en China y a nivel internacional.</p>
+                </div>
                 <button class="btn-restart" onclick="restartGame()">Jugar de nuevo</button>
             </div>
         </div>
