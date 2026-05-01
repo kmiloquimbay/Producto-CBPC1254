@@ -129,8 +129,10 @@ body {
 }
 
 .scenery {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.1);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
     border-radius: 10px;
     padding: 1.5rem;
     margin-bottom: 2rem;
@@ -139,6 +141,22 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
+    min-height: 180px;
+    overflow: hidden;
+}
+
+.scenery::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 0;
+}
+
+.scenery span {
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .scenery-icon {
@@ -342,21 +360,21 @@ body {
 
 .notifications {
     position: fixed;
-    top: 80px;
-    right: 20px;
+    top: 70px;
+    right: 15px;
     z-index: 200;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    max-width: 320px;
+    gap: 6px;
+    max-width: 260px;
 }
 
 .notification {
     background: rgba(22, 33, 62, 0.95);
     border: 1px solid rgba(212, 175, 55, 0.5);
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    padding: 0.6rem 0.75rem;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
     position: relative;
 }
 
@@ -373,19 +391,39 @@ body {
 }
 
 .notification-header {
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     color: var(--gold);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
 }
 
 .notification-content {
-    from { opacity: 1; }
-    to { opacity: 0; visibility: hidden; }
+    font-size: 0.75rem;
+    line-height: 1.3;
+}
+
+.notification-source {
+    font-size: 0.6rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.4);
+    margin-top: 0.25rem;
+}
+
+.notification-dismiss {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.9rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 2px;
 }
 
 .title-screen .year {
@@ -451,21 +489,21 @@ body {
 
 .inbox-indicator {
     position: fixed;
-    top: 20px;
+    top: 15px;
     left: 50%;
     transform: translateX(-50%);
     display: none;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
     background: rgba(233, 69, 96, 0.95);
     color: white;
-    padding: 0.6rem 1.2rem;
-    border-radius: 25px;
-    font-size: 0.9rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
     cursor: pointer;
     z-index: 201;
-    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 3px 10px rgba(233, 69, 96, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     animation: toastFade 2s ease forwards;
 }
 
